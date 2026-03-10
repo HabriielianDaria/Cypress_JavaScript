@@ -15,3 +15,13 @@ describe('Click test', () => {
     cy.url().should('include', '/utilities')
   })
 })
+
+describe('Input test', () => {
+  it('Types text into input', () => {
+    cy.visit('https://example.cypress.io/commands/actions')
+
+    cy.get('.action-email')
+      .type('test@email.com')
+      .should('have.value', 'test@email.com')
+  })
+})
