@@ -1,0 +1,25 @@
+{
+  "name": "cypress_javascript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HabriielianDaria/Cypress_JavaScript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HabriielianDaria/Cypress_JavaScript/issues"
+  },
+  "homepage": "https://github.com/HabriielianDaria/Cypress_JavaScript#readme",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^14.5.4"
+  }
+}
