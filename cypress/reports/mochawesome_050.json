@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-03-22T11:29:16.093Z",
+    "end": "2026-03-22T11:29:18.317Z",
+    "duration": 2224,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2b8615c6-e0ea-4712-ab6d-3c88cadf1bba",
+      "title": "",
+      "fullFile": "cypress/e2e/habriielian_header_footer.cy.js",
+      "file": "cypress/e2e/habriielian_header_footer.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "738fb865-1b9f-45d3-8c9f-d09411ce4a63",
+          "title": "Header and Footer elements",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Finds Sign Up button and opens modal",
+              "fullTitle": "Header and Footer elements Finds Sign Up button and opens modal",
+              "timedOut": null,
+              "duration": 936,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains('button', 'Sign up').should('be.visible').click();",
+              "err": {},
+              "uuid": "47afdead-08b5-4778-9d76-64bbbb7da3af",
+              "parentUUID": "738fb865-1b9f-45d3-8c9f-d09411ce4a63",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Checks Sign Up modal fields",
+              "fullTitle": "Header and Footer elements Checks Sign Up modal fields",
+              "timedOut": null,
+              "duration": 476,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains('button', 'Sign up').should('be.visible').click();\ncy.get('#signupName').should('be.visible');\ncy.get('#signupLastName').should('be.visible');\ncy.get('#signupEmail').should('be.visible');\ncy.get('#signupPassword').should('be.visible');\ncy.get('#signupRepeatPassword').should('be.visible');\ncy.contains('button', 'Register').should('be.visible');",
+              "err": {},
+              "uuid": "94c85b9c-fc53-4b2a-bd75-1a56417ad40e",
+              "parentUUID": "738fb865-1b9f-45d3-8c9f-d09411ce4a63",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Finds all contact links",
+              "fullTitle": "Header and Footer elements Finds all contact links",
+              "timedOut": null,
+              "duration": 238,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#contactsSection').scrollIntoView().within(() => {\n  cy.get('a[href=\"https://ithillel.ua\"]').should('be.visible');\n  cy.get('a[href=\"mailto:developer@ithillel.ua\"]').should('be.visible');\n  cy.get('a[href*=\"facebook\"]').should('be.visible');\n  cy.get('a[href*=\"t.me\"]').should('be.visible');\n  cy.get('a[href*=\"youtube\"]').should('be.visible');\n  cy.get('a[href*=\"instagram\"]').should('be.visible');\n  cy.get('a[href*=\"linkedin\"]').should('be.visible');\n});",
+              "err": {},
+              "uuid": "8c1a2d7a-9f22-44f0-ac24-e06afa4aa0fa",
+              "parentUUID": "738fb865-1b9f-45d3-8c9f-d09411ce4a63",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "47afdead-08b5-4778-9d76-64bbbb7da3af",
+            "94c85b9c-fc53-4b2a-bd75-1a56417ad40e",
+            "8c1a2d7a-9f22-44f0-ac24-e06afa4aa0fa"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1650,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
