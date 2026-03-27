@@ -27,3 +27,18 @@ Cypress.Commands.overwrite('type', (originalFn, element, text, options) => {
 
   return originalFn(element, text, options)
 })
+
+Cypress.Commands.add("createExpense", (carId, liters, cost, mileage) => {
+  return cy.request({
+    method: "POST",
+    url: "/api/expenses",
+    body: {
+      carId,
+      reportedAt: new Date().toISOString().split('T')[0],
+      mileage: Number(mileage),
+      liters: Number(liters),
+      totalCost: Number(cost),
+      forceMileage: false
+    },
+  });
+});
