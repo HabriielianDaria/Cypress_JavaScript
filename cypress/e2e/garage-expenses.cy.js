@@ -1,44 +1,51 @@
 import garagePage from "./pages/GaragePage";
 import expensesPage from "./pages/ExpensesPage";
 
-describe("Garage + Expenses flow", () => {
-  it("Add car and fuel expense", () => {
+describe("Car + API flow", () => {
+  it("Create car, validate via API and UI", () => {
     cy.login();
 
-if (Cypress.config("baseUrl").includes("qauto2")) {
-  cy.intercept('POST', '/api/cars', {
-    statusCode: 201,
-    body: {
-      id: 1,
-      carBrandId: 1,
-      carModelId: 4,
-      brandName: "Audi",
-      modelName: "A6",
-      mileage: 150,
-      userId: 1
-    }
-  }).as('addCar');
-}
+    cy.intercept("POST", "/api/cars").as("createCar");
 
-    // Add car
-    garagePage.addCar("Audi", "A6", "150");
+    //створення авто
+    garagePage.addCar("Audi", "A6", "100");
 
-    cy.contains("Audi A6").should("be.visible");
+    cy.wait("@createCar").then((interception) => {
+      expect(interception.response.statusCode).to.eq(201);
 
-    // Go to expenses
-    cy.contains("Fuel expenses").click();
+      const carId = interception.response.body.data?.id 
+                 || interception.response.body.id;
 
-    // Add expense
-    expensesPage.addExpense("200", "20", "500");
+      //перевірка через API (cars list)
+      cy.request({
+        method: "GET",
+        url: "/api/cars",
+      }).then((response) => {
+        expect(response.status).to.eq(200);
 
- 
-cy.contains("Mileage").should("be.visible");
-cy.contains("Liters used").should("be.visible");
-cy.contains("Total cost").should("be.visible");
+        const cars = response.body.data;
+        const createdCar = cars.find((car) => car.id === carId);
 
-cy.contains("200").should("be.visible");
-cy.contains("20").should("be.visible");
-cy.contains("500").should("be.visible");
+        expect(createdCar).to.exist;
+        expect(createdCar.brand).to.eq("Audi");
+        expect(createdCar.model).to.eq("A6");
+        expect(createdCar.mileage).to.eq(100);
+      });
 
-});
+      //створення expense через API
+      cy.createExpense(carId, 20, 500, 120).then((response) => {
+        expect(response.status).to.eq(200);
+
+        expect(response.body.data.carId).to.eq(carId);
+        expect(response.body.data.liters).to.eq(20);
+        expect(response.body.data.totalCost).to.eq(500);
+      });
+
+      //перевірка через UI
+      cy.contains("Fuel expenses").click();
+
+      cy.contains("20").should("be.visible");
+      cy.contains("500").should("be.visible");
+    });
+  });
 });
