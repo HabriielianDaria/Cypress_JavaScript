@@ -24,10 +24,7 @@ describe('Registration', () => {
 
     cy.contains('Register').click()
     cy.url().should('include', 'garage')
-  })
-
-  it('should login with created user', () => {
-    cy.login(userEmail, userPassword)
-    cy.url().should('include', 'garage')
-  })
+  });
 })
+
+

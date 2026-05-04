@@ -10,6 +10,7 @@ export default defineConfig({
   },
 
   e2e: {
+    browser: "firefox",
     baseUrl: "https://qauto2.forstudy.space",
     specPattern: "cypress/e2e/**/*.cy.js",
 
